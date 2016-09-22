@@ -19,8 +19,9 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
-    influxdb (0.1.8)
+    influxdb (0.3.8)
       json
+      cause
     json (1.8.2)
     kgio (2.9.3)
     methadone (1.9.0)
@@ -90,3 +91,4 @@ DEPENDENCIES
   toml-rb
   tux
   unicorn
+  cause
