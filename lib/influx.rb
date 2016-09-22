@@ -67,7 +67,19 @@ module Influx
           end
         end
         incident.delete(:created_on)
-        @influxdb_rw.write_point(timeseries, incident)
+        data = {
+                values:  { time_to_resolve: incident[:time_to_resolve],
+                           id: incident[:id],
+                           description: incident[:description],
+                           incident_key: incident[:incident_key],
+                           input_type: incident[:input_type],
+                           acknowlege_by: incident[:acknowledge_by],
+                           time_to_ack: incident[:time_to_ack],
+                           category: incident[:category]
+                },
+                timestamp:  incident[:timestamp]
+                }
+        @influxdb_rw.write_point(timeseries, data)
       end
     end
 
