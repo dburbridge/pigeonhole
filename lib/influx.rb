@@ -77,7 +77,7 @@ module Influx
                            time_to_ack: incident[:time_to_ack],
                            category: incident[:category]
                 },
-                timestamp:  incident[:timestamp]
+                timestamp:  incident[:time]
                 }
         @influxdb_rw.write_point(timeseries, data)
       end
