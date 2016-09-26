@@ -101,7 +101,8 @@ module Influx
                       where time > #{start_date}s and time < #{end_date}s "
       influx_query << query_input[:conditions] if query_input && query_input[:conditions]
       incidents = @influxdb.query(influx_query)
-      incidents[timeseries] ? incidents[timeseries] : []
+      incidents = incidents[0]['values']
+      incidents
     end
 
     def get_history(client = nil, check = nil, query_input = nil)
@@ -127,7 +128,8 @@ module Influx
       end
       influx_query << query_input[:conditions] if query_input && query_input[:conditions]
       incidents = @influxdb.query(influx_query)
-      incidents[timeseries] ? incidents[timeseries] : []
+      incidents = incidents[0]['values']
+      incidents
     end
 
     def incident_frequency(start_date = nil, end_date = nil, precondition = '')
