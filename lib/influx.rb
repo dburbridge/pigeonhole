@@ -101,8 +101,12 @@ module Influx
                       where time > #{start_date}s and time < #{end_date}s "
       influx_query << query_input[:conditions] if query_input && query_input[:conditions]
       incidents = @influxdb.query(influx_query)
-      incidents = incidents[0]['values']
-      incidents
+        if incidents.empty?
+        incidents
+        else
+        incidents = incidents[0]['values']
+        incidents
+        end
     end
 
     def get_history(client = nil, check = nil, query_input = nil)
