@@ -69,9 +69,9 @@ class Pagerduty
                          .sort_by { |x| x['created_at'] }
       problem          = log.find { |x| x['type'] == 'trigger' }
       problem_time     = Time.parse(problem['created_at'])
-      acknowledge_by   = nil
-      time_to_ack      = nil
-      time_to_resolve  = nil
+      acknowledge_by   = 'none'
+      time_to_ack      = 0.0
+      time_to_resolve  = 0.0
 
       if log.any? { |x| x['type'] == 'acknowledge' }
         acknowledge      = log.find { |x| x['type'] == 'acknowledge' }
