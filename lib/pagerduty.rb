@@ -51,7 +51,10 @@ class Pagerduty
         :description  => incident['trigger_summary_data']['description'],
         :incident_key => incident['incident_key'],
         :input_type   => incident['service']['name'],
-        :category     => 'not set'
+        :category     => 'not set',
+        :entity       => 'not set',
+        :check        => 'not set'
+
       }
       if incident['trigger_summary_data']['description'].nil?
         # some alerts don't have a description (e.g.: website pulse), fall back on subject and service name
