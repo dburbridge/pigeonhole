@@ -132,8 +132,12 @@ module Influx
       end
       influx_query << query_input[:conditions] if query_input && query_input[:conditions]
       incidents = @influxdb.query(influx_query)
-      incidents = incidents[0]['values']
-      incidents
+        if incidents.empty?
+        incidents
+        else
+        incidents = incidents[0]['values']
+        incidents
+        end
     end
 
     def incident_frequency(start_date = nil, end_date = nil, precondition = '')
