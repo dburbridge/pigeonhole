@@ -486,7 +486,7 @@ module Influx
                            entity: current_point['entity'],
                            check: current_point['check']
                 },
-                timestamp:  current_point['time']
+                timestamp:  Time.parse(current_point['time']).to_i
                 }        
         @influxdb_rw.write_point(timeseries, data)
       end
