@@ -75,8 +75,8 @@ module Influx
                            input_type: incident[:input_type],
                            acknowlege_by: incident[:acknowledge_by],
                            time_to_ack: incident[:time_to_ack],
-                           category: incident[:category]
-                           entity: incident[:entity]
+                           category: incident[:category],
+                           entity: incident[:entity],
                            check: incident[:check]
                 },
                 timestamp:  incident[:time]
