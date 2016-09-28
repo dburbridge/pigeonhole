@@ -73,7 +73,7 @@ module Influx
                            description: incident[:description],
                            incident_key: incident[:incident_key],
                            input_type: incident[:input_type],
-                           acknowlege_by: incident[:acknowledge_by],
+                           acknowledge_by: incident[:acknowledge_by],
                            time_to_ack: incident[:time_to_ack],
                            category: incident[:category],
                            entity: incident[:entity],
