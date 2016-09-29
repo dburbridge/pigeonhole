@@ -211,7 +211,7 @@ module Influx
       return [] if incidents.empty?
       incidents.map do |incident|
         next if incident['check'].nil?
-        t = Time.at(incident['time']).hour
+        t = Time.parse(incident['time']).hour
         # Are we outside of the wake up window? Drop the alert
         next if t > wake_up_start.to_i  && t < wake_up_end.to_i
         {
