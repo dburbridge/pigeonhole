@@ -245,7 +245,7 @@ post '/categorisation/:start_date/:end_date' do
 
   opts[:data] = params
   influxdb.save_categories(opts)
-  redirect "/#{uri}"
+  redirect "/categorisation/#{uri}"
 end
 
 post '/pagerduty' do
