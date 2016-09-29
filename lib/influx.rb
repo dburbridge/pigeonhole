@@ -475,13 +475,13 @@ module Influx
         current_point = entries.find { |x| x['id'] == incident }
         current_point['category'] = category
         data = {
-                values:  { time_to_resolve: current_point['time_to_resolve'],
+                values:  { time_to_resolve: current_point['time_to_resolve'].to_f,
                            id: current_point['id'],
                            description: current_point['description'],
                            incident_key: current_point['incident_key'],
                            input_type: current_point['input_type'],
                            acknowledge_by: current_point['acknowledge_by'],
-                           time_to_ack: current_point['time_to_ack'],
+                           time_to_ack: current_point['time_to_ack'].to_f,
                            category: current_point['category'],
                            entity: current_point['entity'],
                            check: current_point['check']
