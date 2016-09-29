@@ -39,7 +39,7 @@ module Influx
       begin
         entries = @influxdb.query "select id, time_to_resolve from #{timeseries}
                                    where time > #{oldest}s and time < #{newest}s"
-        entries = entries.empty? ? [] : entries[timeseries]
+        entries = entries.empty? ? [] : entries[0]['values']
       rescue InfluxDB::Error => e
         if e.message.match(/^Couldn't find series/)
           entries = []
