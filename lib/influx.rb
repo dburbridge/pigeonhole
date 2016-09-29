@@ -70,14 +70,16 @@ module Influx
         data = {
                 values:  { time_to_resolve: incident[:time_to_resolve],
                            id: incident[:id],
-                           description: incident[:description],
-                           incident_key: incident[:incident_key],
-                           input_type: incident[:input_type],
-                           acknowledge_by: incident[:acknowledge_by],
-                           time_to_ack: incident[:time_to_ack],
-                           category: incident[:category],
-                           entity: incident[:entity],
-                           check: incident[:check]
+                           time_to_ack: incident[:time_to_ack]
+                },
+                tags: {
+                        description: incident[:description],
+                        incident_key: incident[:incident_key],
+                        input_type: incident[:input_type],
+                        acknowledge_by: incident[:acknowledge_by],
+                        category: incident[:category],
+                        entity: incident[:entity],
+                        check: incident[:check]
                 },
                 timestamp:  incident[:time]
                 }
@@ -477,15 +479,17 @@ module Influx
         data = {
                 values:  { time_to_resolve: current_point['time_to_resolve'].to_f,
                            id: current_point['id'],
+                           time_to_ack: current_point['time_to_ack'].to_f
+                },
+                tags:  {
                            description: current_point['description'],
                            incident_key: current_point['incident_key'],
                            input_type: current_point['input_type'],
                            acknowledge_by: current_point['acknowledge_by'],
-                           time_to_ack: current_point['time_to_ack'].to_f,
                            category: current_point['category'],
                            entity: current_point['entity'],
                            check: current_point['check']
-                },
+                  },
                 timestamp:  Time.parse(current_point['time']).to_i
                 }        
         @influxdb_rw.write_point(timeseries, data)
