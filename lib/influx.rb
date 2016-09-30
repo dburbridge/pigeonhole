@@ -430,7 +430,7 @@ module Influx
       stat_matrix << shift_matrix.sort_by { |x| x[:start] }.reverse.take(num_shifts).reverse
       stat_matrix.flatten!
 
-      aggregate_select_str = 'select count(incident_key), ' + %w(ack resolve).map do |type|
+      aggregate_select_str = 'select count(id), ' + %w(ack resolve).map do |type|
         "MEAN(time_to_#{type}) as #{type}_mean, STDDEV(time_to_#{type}) as #{type}_stddev,
          PERCENTILE(time_to_#{type}, 95) as #{type}_95_percentile"
       end.join(', ')
