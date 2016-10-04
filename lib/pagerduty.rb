@@ -44,7 +44,7 @@ class Pagerduty
   def incidents(start_date, finish_date = nil)
     finish_clause     = finish_date ? "&until=#{finish_date}" : ''
     time_zone = @config['time_zone']
-    endpoint  = "https://api.pagerduty.com/incidents?since=#{start_date}#{finish_clause}&time_zone=#{time_zone}"
+    endpoint  = "https://api.pagerduty.com/incidents?urgencies%5B%5D=high&since=#{start_date}#{finish_clause}&time_zone=#{time_zone}"
     response  = request(endpoint)
     incidents = response.map do |incident|
       tmp = {
