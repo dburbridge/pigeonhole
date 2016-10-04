@@ -3,6 +3,10 @@
 //
 $(function() {
 
+    $('.download').click(function(){
+       $("#incidents-table").trigger('outputTable');
+    });
+
   // call the tablesorter plugin
   $("#incidents-table").tablesorter({
     theme: 'blue',
@@ -11,7 +15,7 @@ $(function() {
     widthFixed : true,
 
     // initialize zebra striping and filter widgets
-    widgets: ["zebra", "filter"],
+    widgets: ["zebra", "filter", "output"],
 
     ignoreCase: false,
 
@@ -116,7 +120,39 @@ $(function() {
       filter_defaultAttrib : 'data-value',
 
       // filter_selectSource array text left of the separator is added to the option value, right into the option text
-      filter_selectSourceSeparator : '|'
+      filter_selectSourceSeparator : '|',
+             // set to "json", "array" or any separator
+            output_separator: ',',
+            // header attrib containing modified header name
+            output_dataAttrib: 'data-name',
+            // if true, include multiple header rows (JSON only)
+            output_headerRows: false,
+            // popup, download
+            output_delivery: 'download',
+            // all, visible or filtered
+            output_saveRows: 'filtered',
+            // left double quote
+            output_replaceQuote: '\u201c;',
+            // if true, include any HTML within the table cell
+            output_includeHTML: false,
+            // remove extra whitespace before & after the cell content
+            output_trimSpaces: true,
+            // if true, wrap all output in quotes
+            output_wrapQuotes: false,
+            // if using popup, set it's dimensions here
+            output_popupStyle: 'width=500,height=300',
+            // if saving a file, set the file name here
+            output_saveFileName: 'mytable.csv',
+            // callback executed when processing completes
+            // return true to continue download/output
+            // return false to stop delivery & do something else with the data
+            output_callback: function (data) {
+                return true;
+            },
+            // JSON callback executed when a colspan is encountered in the header
+            output_callbackJSON: function ($cell, txt, cellIndex) {
+                return txt + '(' + (cellIndex + col) + ')';
+            }
 
     }
 
