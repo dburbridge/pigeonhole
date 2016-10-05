@@ -18,4 +18,5 @@ group :development do
   gem 'shotgun'
   gem 'tux'
   gem 'pry'
+  gem 'pry-byebug'
 end
