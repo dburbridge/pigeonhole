@@ -4,6 +4,7 @@ require 'chronic'
 require 'chronic_duration'
 require 'toml'
 require 'active_support/core_ext/numeric/time'
+require 'pry'
 
 module Influx
   class Db
@@ -465,7 +466,7 @@ module Influx
       newest =  Chronic.parse(opts[:end_date], :guess => false).last.to_i
       begin
         entries = @influxdb.query "select * from #{timeseries} where time > #{oldest}s and time < #{newest}s"
-        entries = entries.empty? ? [] : entries[timeseries]
+        entries = entries.empty? ? [] : entries[0]['values']
       rescue InfluxDB::Error => e
         if e.message.match(/^Couldn't find series/)
           entries = []
