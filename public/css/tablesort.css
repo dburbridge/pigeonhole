@@ -66,7 +66,7 @@
   background-image:     none;
 }
 
-* rows hidden by filtering (needed for child rows) */
+/* rows hidden by filtering (needed for child rows) */
 .tablesorter .filtered {
     display: none;
 }
