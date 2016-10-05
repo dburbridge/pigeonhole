@@ -71,6 +71,7 @@ module Influx
         data = {
                 values:  { time_to_resolve: incident[:time_to_resolve],
                            id: incident[:id],
+                           category: incident[:category],
                            time_to_ack: incident[:time_to_ack]
                 },
                 tags: {
@@ -78,7 +79,7 @@ module Influx
                         incident_key: incident[:incident_key],
                         input_type: incident[:input_type],
                         acknowledge_by: incident[:acknowledge_by],
-                        category: incident[:category],
+
                         entity: incident[:entity],
                         check: incident[:check]
                 },
@@ -480,6 +481,7 @@ module Influx
         data = {
                 values:  { time_to_resolve: current_point['time_to_resolve'].to_f,
                            id: current_point['id'],
+                           category: current_point['category'],
                            time_to_ack: current_point['time_to_ack'].to_f
                 },
                 tags:  {
@@ -487,7 +489,6 @@ module Influx
                            incident_key: current_point['incident_key'],
                            input_type: current_point['input_type'],
                            acknowledge_by: current_point['acknowledge_by'],
-                           category: current_point['category'],
                            entity: current_point['entity'],
                            check: current_point['check']
                   },
