@@ -48,14 +48,9 @@
           %td
             %a{:href => "#{@pigeonhole_domain}/history/all/#{incident['check']}"}=incident['check']
           %td= incident['acknowledge_by']
-          %td
-            %select{:name => id, :id => id, :class => "form-control"}
-              -@categories.each do |category|
-                - display_name = category == "self recovered" ? "recovered without intervention" : category
-                - if incident['category'] && category == incident['category']
-                  %option{:value => category, :selected => true}= display_name
-                - else
-                  %option{:value => category}= display_name
+          %td= incident['category']
+
 
   %p.text-right
-    %input{:type => "submit", :value => "save", :class => "btn btn-warning"}
+    %button.download{type: "button"}
+      Download CSV
