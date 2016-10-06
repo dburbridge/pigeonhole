@@ -210,7 +210,7 @@ module Influx
       end.compact
     end
 
-    def wake_up(start_date = nil, end_date = nil, wake_up_start = 5, wake_up_end = 9, precondition = '')
+    def wake_up(start_date = nil, end_date = nil, wake_up_start = 22, wake_up_end = 8, precondition = '')
       incidents = find_incidents(start_date, end_date, :conditions => precondition)
       return [] if incidents.empty?
       incidents.map do |incident|
