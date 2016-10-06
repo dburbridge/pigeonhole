@@ -214,6 +214,7 @@ module Influx
       incidents = find_incidents(start_date, end_date, :conditions => precondition)
       return [] if incidents.empty?
       incidents.map do |incident|
+binding.pry
         next if incident['check'].nil?
         t = Time.parse(incident['time']).hour
         # Are we outside of the wake up window? Drop the alert
