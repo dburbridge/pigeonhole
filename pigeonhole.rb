@@ -234,8 +234,8 @@ get '/wake-up/:start_date/:end_date' do
   @start_date    = params['start_date']
   @end_date      = params['end_date']
   @search        = params['search']
-  @wake_up_start = 5
-  @wake_up_end   = 9
+  @wake_up_start = 22
+  @wake_up_end   = 8
   @incidents     = influxdb.wake_up(@start_date, @end_date, @wake_up_start, @wake_up_end, search_precondition)
   @pagerduty_url = pagerduty.pagerduty_url
   @series        = D3.wake_up(@incidents)
