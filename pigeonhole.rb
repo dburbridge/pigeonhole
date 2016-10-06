@@ -80,6 +80,10 @@ get '/categorisation/?' do
   redirect "/categorisation/#{last_week}/#{today}"
 end
 
+get '/report/?' do
+  redirect "/report/#{last_week}/#{today}"
+end
+
 get '/alert-frequency/?' do
   redirect "/alert-frequency/#{last_week}/#{today}"
 end
@@ -137,6 +141,15 @@ get '/categorisation/:start_date/:end_date' do
   @pagerduty_url = pagerduty.pagerduty_url
   @incidents     = parse_incidents(influxdb.find_incidents(@start_date, @end_date, {:conditions => search_precondition }))
   haml :categorisation
+end
+
+get '/categorisation/:start_date/:end_date' do
+  @start_date    = params["start_date"]
+  @end_date      = params["end_date"]
+  @search        = params["search"]
+  @pagerduty_url = pagerduty.pagerduty_url
+  @incidents     = parse_incidents(influxdb.find_incidents(@start_date, @end_date, {:conditions => search_precondition }))
+  haml :report
 end
 
 get '/alert-frequency/:start_date/:end_date' do
