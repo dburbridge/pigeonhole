@@ -9,17 +9,3 @@
     %h3 Breakdown by shift
     - @stat_summary[3..-1].each do |b|
       = haml :'_stats_table', :locals => { :stats => b}
-
-%h3 Outstanding alerts:
-
-- if @unacked.nil?
-  %h4 The following alerts have not been acknowledged:
-  = haml :'_incident_table', :locals => { :incidents => @unacked, :no_ack => true, :no_resolve => true }
-
-- if @acked.nil?
-  %h4 The following alerts have been acknowledged, but not resolved:
-  = haml :'_incident_table', :locals => { :incidents => @acked, :no_resolve => true }
-
-
-- if @unacked.nil? && @acked.nil?
-  No outstanding alerts. Everything is hunky-dory.
