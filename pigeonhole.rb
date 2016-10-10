@@ -68,9 +68,9 @@ get '/' do
   @stats = %w(mean stddev 95_percentile)
   @stat_summary = influxdb.generate_stats
   @pagerduty_url = pagerduty.pagerduty_url
-  @acked, @unacked = influxdb.unaddressed_alerts
-  @acked = parse_incidents(@acked)
-  @unacked = parse_incidents(@unacked)
+#  @acked, @unacked = influxdb.unaddressed_alerts
+#  @acked = parse_incidents(@acked)
+#  @unacked = parse_incidents(@unacked)
   haml :index
 end
 
