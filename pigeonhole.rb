@@ -132,7 +132,7 @@ get '/categorisation/:start_date/:end_date' do
     'GC issues',
     'IP(s) blocked',
     'self recovered',
-    'high traffic - nothing blocked',
+    'high traffic but nothing blocked',
     'unclear, needs follow up'
   ]
   @start_date    = params["start_date"]
