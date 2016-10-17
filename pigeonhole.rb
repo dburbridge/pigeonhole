@@ -129,11 +129,11 @@ end
 get '/categorisation/:start_date/:end_date' do
   @categories = [
     'not set',
-    'real',
-    'improved',
+    'GC issues',
+    'IP(s) blocked',
     'self recovered',
-    'needs documentation',
-    'unclear, needs discussion'
+    'high traffic but nothing blocked',
+    'unclear, needs follow up'
   ]
   @start_date    = params["start_date"]
   @end_date      = params["end_date"]
