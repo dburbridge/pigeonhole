@@ -43,10 +43,8 @@ def parse_incidents(incidents)
       else
         incident['time_to_ack_unit'] = 'minutes'
     end
-    incident['time_to_resolve'] = 'N/A' if incident['time_to_resolve'] == 0
+
     case incident['time_to_resolve']
-      when 'N/A'
-        incident['time_to_resolve_unit'] = ''
       when 1
         incident['time_to_resolve_unit'] = 'minute'
       else
