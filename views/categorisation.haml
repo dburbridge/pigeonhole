@@ -42,7 +42,7 @@
           %td
             %a{:href => "#{@pagerduty_url}/incidents/#{id}"}= id
           %td= incident['input_type']
-          %td= %02d:%02d:%02d" % [incident['time_to_resolve']/3600%24, incident['time_to_resolve']/60%60, incident['time_to_resolve']%60]
+          %td= "%02d:%02d:%02d" % [incident['time_to_resolve']/3600%24, incident['time_to_resolve']/60%60, incident['time_to_resolve']%60]
           %td
             %a{:href => "#{@pigeonhole_domain}/history/#{incident['entity']}/all"}= incident['entity']
           %td
