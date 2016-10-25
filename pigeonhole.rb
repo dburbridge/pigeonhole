@@ -132,9 +132,9 @@ get '/categorisation/:start_date/:end_date' do
     'self recovered',
     'high traffic but nothing blocked',
     'logged as bug',
-    'disk space'
-    'hardware issue'
-    'network issue'
+    'disk space',
+    'hardware issue',
+    'network issue',
     'unclear, needs follow up'
   ]
   @start_date    = params["start_date"]
