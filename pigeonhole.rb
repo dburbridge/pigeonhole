@@ -132,6 +132,7 @@ get '/categorisation/:start_date/:end_date' do
     'self recovered',
     'high traffic but nothing blocked',
     'logged as bug',
+    'disk space'
     'hardware issue'
     'network issue'
     'unclear, needs follow up'
