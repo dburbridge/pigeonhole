@@ -13,11 +13,8 @@ RUN apt-add-repository ppa:brightbox/ruby-ng \
 && apt-get update \
 && apt-get install -y ruby2.2=2.2.5-1bbox2~trusty1 ruby2.2-dev=2.2.5-1bbox2~trusty1 make gcc cron anacron
 
-
 # Download pigeonhole
 RUN mkdir -p /opt/ && \
-    #git clone https://github.com/pauloconnor/pigeonhole.git /opt/pigeonhole/
-    #git clone https://github.com/bulletproofnetworks/pigeonhole.git /opt/pigeonhole/
 git clone -b dburbridge-patch-1 https://github.com/dburbridge/pigeonhole.git /opt/pigeonhole
 
 # Copy over configs
@@ -35,5 +32,9 @@ EXPOSE 9393
 WORKDIR /opt/pigeonhole
 
 RUN git pull origin dburbridge-patch-1
+
+ADD crontab /etc/cron.d/import
+ 
+RUN chmod 0644 /etc/cron.d/import
 
 ENTRYPOINT "/opt/pigeonhole/init.sh"
