@@ -1,0 +1,42 @@
+[pigeonhole]
+  domain   = "http://localhost"
+
+[influxdb]
+  host     = "localhost"
+  port     = 8086
+  database = "pigeonhole"
+  series   = "pigeonhole"
+  username = "pigeonhole"
+  password = "mypassword"
+  retry    = 3
+
+  # Special read-write user for data alteration
+  username_rw = "pigeonhole_rw"
+  password_rw = "SD5hsfdg8"
+
+[pagerduty]
+  # Auth token can be given with or without the preceding 'Token token='
+  auth_token = ""
+  account_name = ""
+  time_zone  = "UTC"
+
+[pagerduty.schedules]
+  # These are the IDs from your PagerDuty On-Call Schedules,
+  # which when loaded from https://<companyname>.pagerduty.com/schedules
+  # are on the end of the schedule URLs
+  primary   = ""
+  secondary = ""
+
+[email_reminder]
+  from       = "pigeonhole <pigeonhole@example.com>"
+  subject    = "You were recently on call, please fill in the report"
+  message    = ""
+
+[shifts]
+  time_zone = "UTC"
+
+[shifts.first_shift]
+  name = "Night Shift 10-8"
+  start_time = "22:00"
+  # Duration is set in minutes
+  duration = "600"
