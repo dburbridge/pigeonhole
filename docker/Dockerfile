@@ -33,8 +33,8 @@ WORKDIR /opt/pigeonhole
 
 RUN git pull origin dburbridge-patch-1
 
-ADD crontab /etc/cron.d/import
+ADD crontab /etc/cron.hourly/import
  
-RUN chmod 0644 /etc/cron.d/import
+RUN chmod 0644 /etc/cron.hourly/import
 
 ENTRYPOINT "/opt/pigeonhole/init.sh"
