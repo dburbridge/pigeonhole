@@ -135,7 +135,8 @@ get '/categorisation/:start_date/:end_date' do
     'disk space',
     'hardware issue',
     'network issue',
-    'unclear, needs follow up'
+    'unclear, needs follow up',
+    'needs Engineering follow up'
   ]
   @start_date    = params["start_date"]
   @end_date      = params["end_date"]
